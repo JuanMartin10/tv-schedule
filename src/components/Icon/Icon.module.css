@@ -1,5 +1,12 @@
 .icon {
   width: 22px;
   height: 22px;
+}
+
+.icon_white {
   color: #fff;
+}
+
+.icon_yellow {
+  color: #ffa540;
 }

@@ -6,16 +6,16 @@ import * as HIconsSolid from '@heroicons/react/20/solid';
 import { useEffect, useState } from 'react';
 import styles from './Icon.module.css';
 
-type IconColor = 'white';
+type IconColor = 'white' | 'yellow';
 type IconVariant = 'outline' | 'solid';
 
 interface IconProps {
   icon: any;
-  color: IconColor;
+  color?: IconColor;
   variant?: IconVariant;
 }
 
-const Icon: React.FC<IconProps> = ({ icon, variant }) => {
+const Icon: React.FC<IconProps> = ({ icon, color = 'white', variant }) => {
   const [icons, setIcons] = useState(
     variant === 'solid' ? HIconsSolid : HIconsOutline
   );
@@ -30,7 +30,8 @@ const Icon: React.FC<IconProps> = ({ icon, variant }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <TheIcon className={styles.icon} />
+      <TheIcon className={`${styles.icon} ${styles[`icon_${color}`]}`} />
+      {/* <TheIcon className={`${styles.icon} ${styles.icon}_${color}`} /> */}
     </>
   );
 };

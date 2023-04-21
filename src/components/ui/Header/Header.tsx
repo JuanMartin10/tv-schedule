@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import Loader from '../../Loader/Loader';
+import logo from '../../../assets/logo.png';
+import Icon from '../../Icon/Icon';
 
 import styles from './Header.module.css';
 
@@ -7,13 +8,15 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.profile}>
-        <Loader />
+        <Icon icon='UserIcon' color='white' variant='solid' />
       </div>
       <div className={styles.logo}>
-        <Link to='/'>Logo</Link>
+        <Link to='/'>
+          <img src={logo} className={styles.logo} alt='logo' width={40} />
+        </Link>
       </div>
       <div className={styles.search}>
-        <Loader />
+        <Icon icon='MagnifyingGlassIcon' color='white' variant='solid' />
       </div>
     </header>
   );

@@ -3,15 +3,14 @@
 import * as HIconsOutline from '@heroicons/react/24/outline';
 import * as HIconsSolid from '@heroicons/react/20/solid';
 
-import styles from './Icon.module.scss';
 import { useEffect, useState } from 'react';
+import styles from './Icon.module.css';
 
 type IconColor = 'white';
 type IconVariant = 'outline' | 'solid';
 
 interface IconProps {
   icon: any;
-  className?: string;
   color: IconColor;
   variant?: IconVariant;
 }

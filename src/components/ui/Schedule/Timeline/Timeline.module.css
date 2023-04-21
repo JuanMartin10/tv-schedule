@@ -1,0 +1,42 @@
+.timelines {
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  border-top: 1px solid #383838;
+  height: 100%;
+}
+.timeWrapper {
+  background-color: #252525;
+  color: white;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  min-width: 50px;
+}
+.time {
+  position: absolute;
+  top: 18px;
+}
+
+.frames {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  padding-bottom: 6px;
+}
+
+.timelines * {
+  box-sizing: border-box;
+}
+
+.time-frame {
+  background: #383838;
+  height: 10px;
+  width: 1px;
+  margin-right: 75px;
+}

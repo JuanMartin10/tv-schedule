@@ -19,7 +19,7 @@
   max-width: 100%;
   overflow: auto;
   border: 1px solid #383838;
-  grid-template-rows: 80px 50px 1fr;
+  grid-template-rows: 80px 1fr;
   grid-template-columns: 100px auto;
   flex: 1;
   overflow-x: scroll;
@@ -57,7 +57,7 @@
 .channels {
   position: sticky;
   left: 0;
-  z-index: 3;
+  z-index: 3000;
   height: 100%;
   background-color: #252525;
 }
@@ -70,7 +70,7 @@
 }
 
 .bookmark {
-  z-index: 200;
+  z-index: 1000;
   position: absolute;
   top: 0px;
   left: 20px;

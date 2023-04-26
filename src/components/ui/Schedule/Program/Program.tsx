@@ -19,14 +19,16 @@ const Program: React.FC<ProgramProps> = ({ program }) => {
     }
   };
 
-  const getProgramWidth = (startTime: number, endTime: number) => {
-    const durationInMinutes =
-      (Math.abs(endTime - startTime) / (1000 * 60)) % 60;
+  const calculateProgramWidth = (startTime: number, endTime: number) => {
+    const durationInMinutes = Math.abs(endTime - startTime) / (1000 * 60);
+    const programWidth =
+      (durationInMinutes / TIMELINE_DURATION) * TIMELINE_WIDTH;
 
-    const programWidth = `${
-      (durationInMinutes / TIMELINE_DURATION) * TIMELINE_WIDTH
-    }px`;
+    return `${programWidth}px`;
+  };
 
+  const setProgramWidth = (startTime: number, endTime: number) => {
+    const programWidth = calculateProgramWidth(startTime, endTime);
     setWidth(programWidth);
   };
 
@@ -34,7 +36,7 @@ const Program: React.FC<ProgramProps> = ({ program }) => {
   const endTime = getTimeFromDate(new Date(program.end));
 
   useEffect(() => {
-    getProgramWidth(startTime, endTime);
+    setProgramWidth(startTime, endTime);
     getProgramActive(startTime, endTime);
   }, []);
 

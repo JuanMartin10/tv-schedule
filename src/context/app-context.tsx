@@ -7,6 +7,10 @@ export interface AppContextTypes {
   loading: boolean;
   channels: Channel[];
   currentTime: number;
+  startTime: number;
+  endTime: number;
+  timesArray: string[];
+  bookmarkPosition: number;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setChannels: React.Dispatch<React.SetStateAction<Channel[]>>;
 }
@@ -20,7 +24,14 @@ const AppContext = createContext<AppContextTypes | undefined>(undefined);
 export const AppProvider: React.FC<ContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
-  const { channels, setChannels } = useChannels({ setLoading });
+  const {
+    channels,
+    setChannels,
+    startTime,
+    endTime,
+    timesArray,
+    bookmarkPosition,
+  } = useChannels({ setLoading, currentTime });
 
   const currentDate = new Date();
 
@@ -34,6 +45,10 @@ export const AppProvider: React.FC<ContextProps> = ({ children }) => {
         loading,
         channels,
         currentTime,
+        startTime,
+        endTime,
+        timesArray,
+        bookmarkPosition,
         setLoading,
         setChannels,
       }}

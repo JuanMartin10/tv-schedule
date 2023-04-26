@@ -1,45 +1,16 @@
 import { type Channel } from '../../../models/api-types';
-import Dateline from './Dateline/Dateline';
 import Timeline from './Timeline/Timeline';
 import styles from './Schedule.module.css';
 import ChannelComponent from './Channel/Channel';
 import Program from './Program/Program';
-import { useEffect, useRef, useState } from 'react';
-import { TIMELINE_DURATION, TIMELINE_WIDTH } from '../../../util/constants';
+import { useRef } from 'react';
 import { useAppContext } from '../../../context/app-context';
 
 interface ScheduleProps {
   channels: Channel[];
 }
 const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
-  const [data, setData] = useState<Channel[]>(channels);
-  const [bookmarkPosition, setBookmarkPosition] = useState(0);
-  const { currentTime } = useAppContext();
-
-  const createBookmark = () => {
-    if (channels.length < 1 || currentTime === 0) return;
-
-    const resultStartFiltered = channels.map((channel: any) => {
-      return channel.schedules.reduce(
-        (acc: any, val: any) => acc.concat(new Date(val.start).getTime()),
-        []
-      );
-    });
-
-    const minData = Math.min(...resultStartFiltered.flat());
-    console.log(minData);
-
-    const minutes = Math.abs(currentTime - minData) / (1000 * 60);
-
-    const position = (minutes / TIMELINE_DURATION) * TIMELINE_WIDTH;
-
-    setData(channels);
-    setBookmarkPosition(position);
-  };
-
-  useEffect(() => {
-    createBookmark();
-  }, [channels]);
+  const { bookmarkPosition, timesArray } = useAppContext();
 
   const scrollableDivRef = useRef<any>(0);
 
@@ -50,16 +21,10 @@ const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
   return (
     <div className={styles.container}>
       <div className={styles.schedule} ref={scrollableDivRef}>
-        <section className={styles.date}>
-          <p>start</p>
-        </section>
-        <section className={styles.dateline}>
-          <Dateline />
-        </section>
         <section className={styles.timeline}>
-          <Timeline />
+          <Timeline times={timesArray} />
         </section>
-        {data.map((channel: any) => (
+        {channels.map((channel: any) => (
           <div className={`${styles.row}`} key={channel.id}>
             <section className={styles.channels}>
               <ChannelComponent

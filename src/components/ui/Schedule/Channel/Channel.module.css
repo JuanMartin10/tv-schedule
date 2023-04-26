@@ -1,0 +1,17 @@
+.channelsWrapper {
+  display: flex;
+  min-height: 85px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #252525;
+  color: white;
+  border-top: 1px solid #383838;
+  border-right: 1px solid #383838;
+}
+
+.image {
+  width: 60%;
+  height: auto;
+}

@@ -1,8 +1,14 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { type Channel } from '../models/api-types';
+import { getTimeFromDate } from '../util/functions';
+import { useChannels } from '../hooks/useChannels';
 
 export interface AppContextTypes {
   loading: boolean;
+  channels: Channel[];
+  currentTime: number;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setChannels: React.Dispatch<React.SetStateAction<Channel[]>>;
 }
 
 interface ContextProps {
@@ -12,13 +18,24 @@ interface ContextProps {
 const AppContext = createContext<AppContextTypes | undefined>(undefined);
 
 export const AppProvider: React.FC<ContextProps> = ({ children }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [currentTime, setCurrentTime] = useState<number>(0);
+  const { channels, setChannels } = useChannels({ setLoading });
+
+  const currentDate = new Date();
+
+  useEffect(() => {
+    setCurrentTime(getTimeFromDate(currentDate));
+  }, []);
 
   return (
     <AppContext.Provider
       value={{
         loading,
+        channels,
+        currentTime,
         setLoading,
+        setChannels,
       }}
     >
       {children}

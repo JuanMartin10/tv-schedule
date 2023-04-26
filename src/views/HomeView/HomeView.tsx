@@ -1,7 +1,7 @@
-import Schedule from '../../components/ui/Schedule/Schedule';
-import { useAppContext } from '../../context/app-context';
+import { useAppContext } from '@context/app-context';
+import Schedule from '@components/ui/Schedule/Schedule';
+import Loader from '@components/Loader/Loader';
 import styles from './HomeView.module.css';
-import Loader from '../../components/Loader/Loader';
 
 const HomeView = () => {
   const { loading, channels } = useAppContext();

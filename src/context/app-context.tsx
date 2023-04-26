@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { type Channel } from '../models/api-types';
-import { getTimeFromDate } from '../util/functions';
-import { useChannels } from '../hooks/useChannels';
+import { type Channel } from '@models/api-types';
+import { getTimeFromDate } from '@util/functions';
+import { useChannels } from '@hooks/useChannels';
 
 export interface AppContextTypes {
   loading: boolean;

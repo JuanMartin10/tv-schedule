@@ -1,7 +1,6 @@
-import { Outlet } from 'react-router-dom';
-import Header from '../components/ui/Header/Header';
+import Header from '@components/ui/Header/Header';
+import Footer from '@components/ui/Footer/Footer';
 import styles from './Layout.module.css';
-import Footer from '../components/ui/Footer/Footer';
 
 interface LayoutProps {
   children: React.ReactNode;

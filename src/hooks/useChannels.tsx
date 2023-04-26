@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { type Channel } from '../models/api-types';
-import { fetchData } from '../services';
-import { TIMELINE_DURATION, TIMELINE_WIDTH } from '../util/constants';
+import { type Channel } from '@models/api-types';
+import { fetchData } from '@services';
+import { TIMELINE_DURATION, TIMELINE_WIDTH } from '@util/constants';
 
 enum DateKey {
   start = 'start',

@@ -1,15 +1,15 @@
-import styles from './ProgramView.module.css';
-import Icon from '../../../components/Icon/Icon';
-import { MOCK_CHANNEL_IMAGE, MOCK_PROGRAM_IMAGE } from '../../../mocks';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useAppContext } from '@context/app-context';
+import Icon from '@components/Icon/Icon';
+import { MOCK_CHANNEL_IMAGE, MOCK_PROGRAM_IMAGE } from '@mocks';
 import {
   formatDate,
   formatHours,
   getIsProgramActive,
   getTimeFromDateISO,
-} from '../../../util/functions';
-import { useEffect, useState } from 'react';
-import { useAppContext } from '../../../context/app-context';
+} from '@util/functions';
+import styles from './ProgramView.module.css';
 
 const ProgramView = () => {
   const {

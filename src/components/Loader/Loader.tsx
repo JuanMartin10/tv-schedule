@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
-import { useAppContext } from '../../context/app-context';
+import { useAppContext } from '@context/app-context';
 
 const Loader = () => {
   const [color] = useState('#FFA540');

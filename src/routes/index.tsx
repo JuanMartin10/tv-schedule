@@ -1,7 +1,7 @@
 import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from '../layout/Layout';
-import HomeView from '../views/HomeView/HomeView';
-import ProgramView from '../views/HomeView/ProgramView/ProgramView';
+import Layout from '@layout/Layout';
+import HomeView from '@views/HomeView/HomeView';
+import ProgramView from '@views/HomeView/ProgramView/ProgramView';
 
 export const HOME_PATH = '/';
 

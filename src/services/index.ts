@@ -1,4 +1,4 @@
-import { type Channel } from '../models/api-types';
+import { type Channel } from '@models/api-types';
 
 const API_URL = `http://localhost:1337/epg`;
 

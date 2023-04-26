@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { type Channel, type Schedule } from '../../../../models/api-types';
+import { Link } from 'react-router-dom';
+import { type Channel, type Schedule } from '@models/api-types';
+import { useAppContext } from '@context/app-context';
 import {
   formatHours,
   getIsProgramActive,
   getTimeFromDateISO,
-} from '../../../../util/functions';
+} from '@util/functions';
+import { TIMELINE_DURATION, TIMELINE_WIDTH } from '@util/constants';
 import styles from './Program.module.css';
-import { TIMELINE_DURATION, TIMELINE_WIDTH } from '../../../../util/constants';
-import { useAppContext } from '../../../../context/app-context';
-import { Link } from 'react-router-dom';
 
 interface ProgramProps {
   program: Schedule;

@@ -1,5 +1,5 @@
 import styles from './Footer.module.css';
-import Icon from '../../Icon/Icon';
+import Icon from '@components/Icon/Icon';
 
 const Footer = () => {
   return (

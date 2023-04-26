@@ -1,10 +1,12 @@
-import { type Channel } from '../../../models/api-types';
+import { useRef } from 'react';
+import { type Channel } from '@models/api-types';
+import { useAppContext } from '@context/app-context';
+
 import Timeline from './Timeline/Timeline';
-import styles from './Schedule.module.css';
 import ChannelComponent from './Channel/Channel';
 import Program from './Program/Program';
-import { useRef } from 'react';
-import { useAppContext } from '../../../context/app-context';
+
+import styles from './Schedule.module.css';
 
 interface ScheduleProps {
   channels: Channel[];

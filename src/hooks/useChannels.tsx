@@ -87,6 +87,17 @@ export const useChannels = ({ setLoading, currentTime }: any) => {
     createBookmark();
   }, [startTime]);
 
+  useEffect(() => {
+    if (!startTime) return;
+
+    const timerInterval = setInterval(() => {
+      createBookmark();
+    }, 1000 * 60);
+    return () => {
+      clearInterval(timerInterval);
+    };
+  });
+
   return {
     channels,
     startTime,

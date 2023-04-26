@@ -1,3 +1,4 @@
+import { MOCK_CHANNEL_IMAGE } from '../../../../mocks';
 import { type Channel as ChannelType } from '../../../../models/api-types';
 import styles from './Channel.module.css';
 interface ChannelProps {
@@ -8,12 +9,9 @@ const Channel: React.FC<ChannelProps> = ({ channel }) => {
     images: { logo },
   } = channel;
 
-  const mockUrl =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sky_1_Logo_2016.svg/1200px-Sky_1_Logo_2016.svg.png';
-
   return (
     <div className={styles.channelsWrapper}>
-      <img className={styles.image} src={mockUrl}></img>
+      <img className={styles.image} src={MOCK_CHANNEL_IMAGE}></img>
     </div>
   );
 };

@@ -66,7 +66,6 @@ export const useChannels = ({ setLoading, currentTime }: any) => {
 
   const createBookmark = () => {
     if (channels.length < 1 || currentTime === 0) return;
-
     const minutes = Math.abs(currentTime - startTime) / (1000 * 60);
 
     const position = (minutes / TIMELINE_DURATION) * TIMELINE_WIDTH;

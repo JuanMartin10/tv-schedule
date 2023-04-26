@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+}
+
+.imageContainer {
+  position: relative;
+}
+.image {
+  width: 100%;
+}
+.live {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 4px 8px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  border-radius: 4px;
+  padding-left: 25px;
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-image: url('https://static.thenounproject.com/png/1192912-200.png');
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+  cursor: pointer;
+}
+.live::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  animation: blink 1s ease-in-out infinite;
+}
+.programView {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  margin-bottom: 150px;
+  padding: 0 10px;
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 0 4px;
+}
+.infoTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+}
+.channel,
+.infoDetails {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.day::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: #808080;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 4px;
+}
+.grey {
+  color: #808080;
+}
+
+.white {
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  .programView {
+    padding: 0;
+    margin-bottom: 50px;
+    gap: 32px;
+  }
+  .info {
+    gap: 16px;
+  }
+  .channel,
+  .infoDetails {
+    font-size: 16px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

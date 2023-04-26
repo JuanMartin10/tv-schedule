@@ -15,7 +15,11 @@ const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
   const scrollableDivRef = useRef<any>(0);
 
   const handleButtonClick = (): void => {
-    scrollableDivRef.current.scrollLeft = bookmarkPosition - 400;
+    const viewportWidth = window.innerWidth;
+    const scrollableDiv = scrollableDivRef.current;
+    const halfViewportWidth = viewportWidth / 2;
+    const targetScrollLeft = bookmarkPosition - halfViewportWidth;
+    scrollableDiv.scrollLeft = targetScrollLeft;
   };
 
   return (
@@ -37,6 +41,7 @@ const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
                 <Program
                   key={`${program.id}-${program.title}-${program.start}`}
                   program={program}
+                  channel={channel}
                 />
               ))}
               <div

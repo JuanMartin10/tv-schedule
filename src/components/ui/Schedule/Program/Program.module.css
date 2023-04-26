@@ -11,6 +11,10 @@
   align-items: flex-start;
 }
 
+.program:hover {
+  background-color: #4c4c4c;
+  cursor: pointer;
+}
 .program_active {
   background-color: #393939;
 }

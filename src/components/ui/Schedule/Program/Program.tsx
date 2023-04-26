@@ -1,20 +1,26 @@
 import { useEffect, useState } from 'react';
-import { type Schedule } from '../../../../models/api-types';
-import { formatDate, getTimeFromDate } from '../../../../util/functions';
+import { type Channel, type Schedule } from '../../../../models/api-types';
+import {
+  formatHours,
+  getIsProgramActive,
+  getTimeFromDateISO,
+} from '../../../../util/functions';
 import styles from './Program.module.css';
 import { TIMELINE_DURATION, TIMELINE_WIDTH } from '../../../../util/constants';
 import { useAppContext } from '../../../../context/app-context';
+import { Link } from 'react-router-dom';
 
 interface ProgramProps {
   program: Schedule;
+  channel: Channel;
 }
-const Program: React.FC<ProgramProps> = ({ program }) => {
+const Program: React.FC<ProgramProps> = ({ program, channel }) => {
   const [width, setWidth] = useState('');
   const [isProgramActive, setIsProgramActive] = useState(false);
   const { currentTime } = useAppContext();
 
   const getProgramActive = (startTime: number, endTime: number) => {
-    if (startTime <= currentTime && endTime >= currentTime) {
+    if (getIsProgramActive(startTime, endTime, currentTime)) {
       setIsProgramActive(true);
     }
   };
@@ -32,8 +38,8 @@ const Program: React.FC<ProgramProps> = ({ program }) => {
     setWidth(programWidth);
   };
 
-  const startTime = getTimeFromDate(new Date(program.start));
-  const endTime = getTimeFromDate(new Date(program.end));
+  const startTime = getTimeFromDateISO(program.start);
+  const endTime = getTimeFromDateISO(program.end);
 
   useEffect(() => {
     setProgramWidth(startTime, endTime);
@@ -41,18 +47,29 @@ const Program: React.FC<ProgramProps> = ({ program }) => {
   }, []);
 
   return (
-    <div
-      className={`${styles.program} ${
-        // eslint-disable-next-line @typescript-eslint/dot-notation
-        Boolean(isProgramActive) && styles[`program_active`]
-      }`}
-      style={{ width: width }}
+    <Link
+      to={`${channel.id}/${program.id}`}
+      style={{
+        textDecoration: 'none',
+        color: 'inherit',
+        fontSize: 'inherit',
+        height: '100%',
+      }}
+      state={{ program, channel }}
     >
-      <p className={styles.title}>{program.title}</p>
-      <span className={styles.hour}>{`${formatDate(program.start)}-${formatDate(
-        program.end
-      )}`}</span>
-    </div>
+      <div
+        className={`${styles.program} ${
+          // eslint-disable-next-line @typescript-eslint/dot-notation
+          Boolean(isProgramActive) && styles[`program_active`]
+        }`}
+        style={{ width: width }}
+      >
+        <p className={styles.title}>{program.title}</p>
+        <span className={styles.hour}>{`${formatHours(
+          program.start
+        )}-${formatHours(program.end)}`}</span>
+      </div>
+    </Link>
   );
 };
 

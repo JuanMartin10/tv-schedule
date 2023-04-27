@@ -7,7 +7,7 @@
     "dev": "yarn start:api & vite",
     "dev:vite": "vite",
     "build": "tsc && vite build",
-    "build:all": "yarn run start:api & yarn build && yarn preview",
+    "build:all": "yarn run start:api & yarn build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prettier": "prettier --write .",

@@ -9,6 +9,6 @@ export const fetchData = async (): Promise<Channel[]> => {
 
     return channels;
   } catch (error: any) {
-    throw new Error('Error fetching entries:', error);
+    throw new Error('Error fetching programs:', error);
   }
 };

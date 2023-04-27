@@ -7,13 +7,15 @@ interface ChannelProps {
 }
 
 const Channel: React.FC<ChannelProps> = ({ channel }) => {
-  const {
+  let {
     images: { logo },
   } = channel;
 
+  logo = MOCK_CHANNEL_IMAGE;
+
   return (
     <div className={styles.channelsWrapper}>
-      <img className={styles.image} src={MOCK_CHANNEL_IMAGE}></img>
+      <img className={styles.image} src={logo}></img>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
         <section className={styles.timeline}>
           <Timeline times={timesArray} />
         </section>
-        {channels.map((channel: any) => (
+        {channels.map(channel => (
           <div className={`${styles.row}`} key={channel.id}>
             <section className={styles.channels}>
               <ChannelComponent
@@ -39,7 +39,7 @@ const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
               />
             </section>
             <section className={styles.programs}>
-              {channel.schedules.map((program: any) => (
+              {channel.schedules.map(program => (
                 <Program
                   key={`${program.id}-${program.title}-${program.start}`}
                   program={program}

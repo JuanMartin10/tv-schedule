@@ -6,7 +6,7 @@ import { MOCK_PROGRAM_IMAGE } from '@mocks';
 import {
   formatDate,
   formatHours,
-  getIsProgramActive,
+  isProgramActive,
   getTimeFromDateISO,
 } from '@util/functions';
 import styles from './ProgramView.module.css';
@@ -20,7 +20,7 @@ const ProgramView = () => {
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
-    const res = getIsProgramActive(
+    const res = isProgramActive(
       getTimeFromDateISO(program.start),
       getTimeFromDateISO(program.end),
       currentTime
@@ -44,7 +44,7 @@ const ProgramView = () => {
             <h5 className={styles.white}>{channel.title}</h5>
             <span>{`${formatHours(program.start)}-${formatHours(
               program.end
-            )}`}</span>{' '}
+            )}`}</span>
             <span className={styles.day}> {formatDate(program.start)} </span>
           </div>
           <h3 className={styles.title}>{program.title}</h3>

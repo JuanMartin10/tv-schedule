@@ -1,3 +1,12 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  height: 100%;
+}
+.link:hover {
+  color: #808080;
+}
 .program {
   position: relative;
   box-sizing: border-box;

@@ -8,7 +8,7 @@ const HomeView = () => {
 
   return (
     <>
-      {channels.length > 1 || loading ? (
+      {!loading ? (
         <Schedule channels={channels} />
       ) : (
         <div className={styles.main}>

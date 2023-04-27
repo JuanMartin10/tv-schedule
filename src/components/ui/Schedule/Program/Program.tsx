@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { type Channel, type Schedule } from '@models/api-types';
 import { useAppContext } from '@context/app-context';
 import {
+  calculateProgramWidth,
   formatHours,
-  getIsProgramActive,
+  isProgramActive as checkIsProgramActive,
   getTimeFromDateISO,
 } from '@util/functions';
-import { TIMELINE_DURATION, TIMELINE_WIDTH } from '@util/constants';
 import styles from './Program.module.css';
 
 interface ProgramProps {
@@ -20,17 +21,9 @@ const Program: React.FC<ProgramProps> = ({ program, channel }) => {
   const { currentTime } = useAppContext();
 
   const getProgramActive = (startTime: number, endTime: number) => {
-    if (getIsProgramActive(startTime, endTime, currentTime)) {
+    if (checkIsProgramActive(startTime, endTime, currentTime)) {
       setIsProgramActive(true);
     }
-  };
-
-  const calculateProgramWidth = (startTime: number, endTime: number) => {
-    const durationInMinutes = Math.abs(endTime - startTime) / (1000 * 60);
-    const programWidth =
-      (durationInMinutes / TIMELINE_DURATION) * TIMELINE_WIDTH;
-
-    return `${programWidth}px`;
   };
 
   const setProgramWidth = (startTime: number, endTime: number) => {
@@ -49,20 +42,14 @@ const Program: React.FC<ProgramProps> = ({ program, channel }) => {
   return (
     <Link
       to={`${channel.id}/${program.id}`}
-      style={{
-        textDecoration: 'none',
-        color: 'inherit',
-        fontSize: 'inherit',
-        height: '100%',
-      }}
+      className={styles.link}
       state={{ program, channel }}
     >
       <div
         className={`${styles.program} ${
-          // eslint-disable-next-line @typescript-eslint/dot-notation
-          Boolean(isProgramActive) && styles[`program_active`]
+          isProgramActive && styles[`program_active`]
         }`}
-        style={{ width: width }}
+        style={{ width }}
       >
         <p className={styles.title}>{program.title}</p>
         <span className={styles.hour}>{`${formatHours(

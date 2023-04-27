@@ -4,7 +4,6 @@ import { useAppContext } from '@context/app-context';
 
 import Timeline from './Timeline/Timeline';
 import ChannelComponent from './Channel/Channel';
-import Program from './Program/Program';
 
 import styles from './Schedule.module.css';
 
@@ -31,27 +30,7 @@ const Schedule: React.FC<ScheduleProps> = ({ channels }) => {
           <Timeline times={timesArray} />
         </section>
         {channels.map(channel => (
-          <div className={`${styles.row}`} key={channel.id}>
-            <section className={styles.channels}>
-              <ChannelComponent
-                key={`${channel.id}-${channel.title}`}
-                channel={channel}
-              />
-            </section>
-            <section className={styles.programs}>
-              {channel.schedules.map(program => (
-                <Program
-                  key={`${program.id}-${program.title}-${program.start}`}
-                  program={program}
-                  channel={channel}
-                />
-              ))}
-              <div
-                className={styles.bookmark}
-                style={{ left: `${bookmarkPosition}px` }}
-              ></div>
-            </section>
-          </div>
+          <ChannelComponent key={channel.id} channel={channel} />
         ))}
       </div>
       <button

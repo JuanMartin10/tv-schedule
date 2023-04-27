@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { type Channel } from '@models/api-types';
 import { fetchData } from '@services';
-import { TIMELINE_DURATION, TIMELINE_WIDTH } from '@util/constants';
+import {
+  MILLISECONDS_IN_MINUTE,
+  TIMELINE_DURATION,
+  TIMELINE_WIDTH,
+} from '@util/constants';
+import { durationInMinutes } from '../util/functions';
 
 enum DateKey {
   start = 'start',
@@ -54,7 +59,11 @@ export const useChannels = ({ setLoading, currentTime }: any) => {
   const createHoursArray = () => {
     const hourArray: string[] = [];
 
-    for (let i = startTime; i <= endTime; i += TIMELINE_DURATION * 60 * 1000) {
+    for (
+      let i = startTime;
+      i <= endTime;
+      i += TIMELINE_DURATION * MILLISECONDS_IN_MINUTE
+    ) {
       const date = new Date(i);
       const hours = date.getHours().toString().padStart(2, '0');
       const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -66,8 +75,8 @@ export const useChannels = ({ setLoading, currentTime }: any) => {
 
   const createBookmark = () => {
     if (channels.length < 1 || currentTime === 0) return;
-    const minutes = Math.abs(currentTime - startTime) / (1000 * 60);
 
+    const minutes = durationInMinutes(currentTime, startTime);
     const position = (minutes / TIMELINE_DURATION) * TIMELINE_WIDTH;
 
     setBookmarkPosition(position);
@@ -91,7 +100,7 @@ export const useChannels = ({ setLoading, currentTime }: any) => {
 
     const timerInterval = setInterval(() => {
       createBookmark();
-    }, 1000 * 60);
+    }, MILLISECONDS_IN_MINUTE);
     return () => {
       clearInterval(timerInterval);
     };

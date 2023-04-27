@@ -19,7 +19,7 @@ interface ContextProps {
   children: React.ReactNode;
 }
 
-const AppContext = createContext<AppContextTypes | undefined>(undefined);
+export const AppContext = createContext<AppContextTypes | undefined>(undefined);
 
 export const AppProvider: React.FC<ContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);

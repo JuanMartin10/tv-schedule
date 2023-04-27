@@ -16,7 +16,23 @@ yarn  install
 ```
 
 ### Step 2: Development
+#### Development mode
 ```sh
 yarn  dev
 ```
 Then, Your browser will open at http://localhost:5173 to view it, and it will reload when you make any changes. Remember to have the MockAPI server up and running.
+#### Production mode
+```sh
+yarn  build && yarn  run  preview
+```
+Then, Your browser will open at http://localhost:4173 to view it.
+
+### Step 3: Testing
+```sh
+yarn  run  test
+```
+
+Run test coverage:
+```sh
+yarn  run  coveage
+```

@@ -45,11 +45,7 @@ describe('<HomeView />', () => {
   it('Should render', () => {
     renderWithProvider(wrapper);
   });
-  // it('Should not render a header component', async () => {
-  //   waitFor(() => {
-  //     expect(screen.getByRole('header')).toBeNull();
-  //   });
-  // });
+
   it('Should match the snapshot', () => {
     const { container } = renderWithProvider(wrapper);
     expect(container).toMatchSnapshot();
@@ -57,7 +53,6 @@ describe('<HomeView />', () => {
 
   it('Should render now button component ', () => {
     waitFor(() => {
-      // const { getByText } = renderWithProvider(wrapper);
       const nowButton = screen.getByText(/now/i);
 
       expect(nowButton).toBeInTheDocument();

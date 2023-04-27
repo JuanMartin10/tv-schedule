@@ -4,21 +4,26 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "yarn start:api & vite",
+    "dev:vite": "vite",
     "build": "tsc && vite build",
+    "build:all": "yarn run start:api & yarn build && yarn preview",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prettier": "prettier --write .",
     "format": "yarn prettier && yarn lint",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "start:mock-api": "./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
+    "start:api": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && yarn run start:mock-api"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
-    "react-spinners": "^0.13.8"
+    "react-spinners": "^0.13.8",
+    "nm-mock-api": "git+https://github.com/NoriginMedia/mock-api.git#cloudberry"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.2.0",

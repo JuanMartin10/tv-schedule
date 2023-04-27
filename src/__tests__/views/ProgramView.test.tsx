@@ -26,7 +26,7 @@ const renderWithProvider = (ui: React.ReactElement) =>
 const channel = channelsJson.channels[1];
 const program = channelsJson.channels[1].schedules[1];
 
-const wrapper = ({ channelId, programId, children }: any) => (
+const wrapper = ({ channelId, programId }: any) => (
   <MemoryRouter
     initialEntries={[
       `/${channelId}/${programId}`,

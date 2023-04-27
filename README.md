@@ -11,6 +11,8 @@ The application has two views:
 - Home view
 - Program view
 
+* Note: Channel images are not displayed because the link returned by the API is broken.
+
 ### Step 1: Installation
 ```sh
 yarn install

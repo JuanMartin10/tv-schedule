@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppContext } from '@context/app-context';
 import Icon from '@components/Icon/Icon';
-import { MOCK_CHANNEL_IMAGE, MOCK_PROGRAM_IMAGE } from '@mocks';
+import { MOCK_PROGRAM_IMAGE } from '@mocks';
 import {
   formatDate,
   formatHours,
@@ -37,7 +37,7 @@ const ProgramView = () => {
       </section>
       <section className={styles.info}>
         <div>
-          <img src={MOCK_CHANNEL_IMAGE} width={100} />
+          <img src={channel.images.logo} width={100} />
         </div>
         <div className={styles.infoTitle}>
           <div className={`${styles.channel} ${styles.grey}`}>

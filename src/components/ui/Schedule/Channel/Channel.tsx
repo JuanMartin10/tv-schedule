@@ -7,17 +7,6 @@ interface ChannelProps {
   channel: ChannelType;
 }
 
-// const Channel: React.FC<ChannelProps> = ({ channel }) => {
-//   const {
-//     images: { logo },
-//   } = channel;
-
-//   return (
-//     <div className={styles.channelsWrapper}>
-//       <img className={styles.image} src={logo}></img>
-//     </div>
-//   );
-// };
 const Channel: React.FC<ChannelProps> = ({ channel }) => {
   const { bookmarkPosition } = useAppContext();
 

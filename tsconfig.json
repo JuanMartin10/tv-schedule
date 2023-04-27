@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@*": ["./*"],
+      "@*": ["./*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -22,8 +22,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "types": ["vitest/globals"]
-
   },
-  "include": ["vite.config.ts",  "src"],
+  "include": ["vite.config.ts", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

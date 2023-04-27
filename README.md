@@ -1,6 +1,6 @@
 
 ## How can I run this project?
-This project shows a television channel schedule planning whose data comes from MockAPI. In order to view this project locally, you need to access its repository and download it by following the instructions in its readme at https://github.com/NoriginMedia/candidate-tester.
+This project shows a television channel schedule planning whose data comes from MockAPI. In order to view this project locally, you need to access its repository and download it by following the instructions in its readme at https://github.com/NoriginMedia/candidate-tester#mock-api.
 
 This project displays the schedule planning of television channels along with their respective timings, and allows you to access the details of a program, indicating whether it is currently airing or not.
  

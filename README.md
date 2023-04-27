@@ -1,4 +1,9 @@
 
+## How can I see this project on production?
+This project is hosted on Vercel, you can view it at this URL:
+```sh
+https://tv-schedule-one.vercel.app/
+```
 ## How can I run this project?
 This project shows a television channel schedule planning whose data comes from MockAPI.
 
